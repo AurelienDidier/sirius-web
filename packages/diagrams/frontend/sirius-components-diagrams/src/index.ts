@@ -37,6 +37,8 @@ export { useConnectorNodeStyle } from './renderer/connector/useConnectorNodeStyl
 export { BorderNodePosition as BorderNodePosition } from './renderer/DiagramRenderer.types';
 export type { Diagram, EdgeData, NodeData, ReactFlowPropsCustomizer } from './renderer/DiagramRenderer.types';
 export { diagramRendererReactFlowPropsCustomizerExtensionPoint } from './renderer/DiagramRendererExtensionPoints';
+export { DiagramDirectEditInput } from './renderer/direct-edit/DiagramDirectEditInput';
+export { useDiagramDirectEdit } from './renderer/direct-edit/useDiagramDirectEdit';
 export { useDrop } from './renderer/drop/useDrop';
 export { useDropNode } from './renderer/dropNode/useDropNode';
 export { useDropNodeStyle } from './renderer/dropNode/useDropNodeStyle';
