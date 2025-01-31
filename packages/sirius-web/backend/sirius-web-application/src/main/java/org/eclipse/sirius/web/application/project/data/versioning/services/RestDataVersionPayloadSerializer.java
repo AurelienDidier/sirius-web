@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 Obeo.
+ * Copyright (c) 2024, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -22,14 +22,14 @@ import java.util.Objects;
 
 import org.eclipse.sirius.web.application.project.data.versioning.dto.RestDataVersion;
 import org.eclipse.sirius.web.application.project.data.versioning.services.api.IRestDataVersionPayloadSerializerService;
-import org.springframework.stereotype.Service;
+import org.springframework.boot.jackson.JsonComponent;
 
 /**
  * Specific JSON serializer for the payload attribute of {@link RestDataVersion}.
  *
  * @author arichard
  */
-@Service
+@JsonComponent
 public class RestDataVersionPayloadSerializer extends JsonSerializer<Object> {
 
     private final List<IRestDataVersionPayloadSerializerService> restDataVersionPayloadSerializerServices;
@@ -45,6 +45,8 @@ public class RestDataVersionPayloadSerializer extends JsonSerializer<Object> {
                 .findFirst();
         if (optionalDelegate.isPresent()) {
             optionalDelegate.get().serialize(value, gen, serializers);
+        } else {
+            gen.writeNull();
         }
     }
 }

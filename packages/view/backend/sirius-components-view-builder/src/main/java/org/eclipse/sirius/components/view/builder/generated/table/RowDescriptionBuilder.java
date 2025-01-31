@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023, 2024 Obeo.
+ * Copyright (c) 2023, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -22,12 +22,14 @@ public class RowDescriptionBuilder {
 
     /**
      * Create instance org.eclipse.sirius.components.view.table.RowDescription.
+     *
      * @generated
      */
     private org.eclipse.sirius.components.view.table.RowDescription rowDescription = org.eclipse.sirius.components.view.table.TableFactory.eINSTANCE.createRowDescription();
 
     /**
      * Return instance org.eclipse.sirius.components.view.table.RowDescription.
+     *
      * @generated
      */
     protected org.eclipse.sirius.components.view.table.RowDescription getRowDescription() {
@@ -36,6 +38,7 @@ public class RowDescriptionBuilder {
 
     /**
      * Return instance org.eclipse.sirius.components.view.table.RowDescription.
+     *
      * @generated
      */
     public org.eclipse.sirius.components.view.table.RowDescription build() {
@@ -51,15 +54,7 @@ public class RowDescriptionBuilder {
         this.getRowDescription().setName(value);
         return this;
     }
-    /**
-     * Setter for DomainType.
-     *
-     * @generated
-     */
-    public RowDescriptionBuilder domainType(java.lang.String value) {
-        this.getRowDescription().setDomainType(value);
-        return this;
-    }
+
     /**
      * Setter for SemanticCandidatesExpression.
      *
@@ -69,15 +64,7 @@ public class RowDescriptionBuilder {
         this.getRowDescription().setSemanticCandidatesExpression(value);
         return this;
     }
-    /**
-     * Setter for PreconditionExpression.
-     *
-     * @generated
-     */
-    public RowDescriptionBuilder preconditionExpression(java.lang.String value) {
-        this.getRowDescription().setPreconditionExpression(value);
-        return this;
-    }
+
     /**
      * Setter for HeaderLabelExpression.
      *
@@ -87,6 +74,7 @@ public class RowDescriptionBuilder {
         this.getRowDescription().setHeaderLabelExpression(value);
         return this;
     }
+
     /**
      * Setter for HeaderIconExpression.
      *
@@ -96,6 +84,7 @@ public class RowDescriptionBuilder {
         this.getRowDescription().setHeaderIconExpression(value);
         return this;
     }
+
     /**
      * Setter for HeaderIndexLabelExpression.
      *
@@ -105,6 +94,7 @@ public class RowDescriptionBuilder {
         this.getRowDescription().setHeaderIndexLabelExpression(value);
         return this;
     }
+
     /**
      * Setter for InitialHeightExpression.
      *
@@ -114,6 +104,7 @@ public class RowDescriptionBuilder {
         this.getRowDescription().setInitialHeightExpression(value);
         return this;
     }
+
     /**
      * Setter for IsResizableExpression.
      *
@@ -121,6 +112,18 @@ public class RowDescriptionBuilder {
      */
     public RowDescriptionBuilder isResizableExpression(java.lang.String value) {
         this.getRowDescription().setIsResizableExpression(value);
+        return this;
+    }
+
+    /**
+     * Setter for ContextMenuEntries.
+     *
+     * @generated
+     */
+    public RowDescriptionBuilder contextMenuEntries(org.eclipse.sirius.components.view.table.RowContextMenuEntry ... values) {
+        for (org.eclipse.sirius.components.view.table.RowContextMenuEntry value : values) {
+            this.getRowDescription().getContextMenuEntries().add(value);
+        }
         return this;
     }
 

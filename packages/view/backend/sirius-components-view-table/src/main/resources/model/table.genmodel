@@ -19,13 +19,11 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//TableDescription/rowDescription"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//TableDescription/cellDescriptions"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="table.ecore#//TableElementDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//TableElementDescription/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//TableElementDescription/domainType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//TableElementDescription/semanticCandidatesExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//TableElementDescription/preconditionExpression"/>
-    </genClasses>
     <genClasses ecoreClass="table.ecore#//ColumnDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//ColumnDescription/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//ColumnDescription/domainType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//ColumnDescription/semanticCandidatesExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//ColumnDescription/preconditionExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//ColumnDescription/headerIndexLabelExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//ColumnDescription/headerLabelExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//ColumnDescription/headerIconExpression"/>
@@ -34,13 +32,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//ColumnDescription/filterWidgetExpression"/>
     </genClasses>
     <genClasses ecoreClass="table.ecore#//RowDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowDescription/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowDescription/semanticCandidatesExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowDescription/headerLabelExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowDescription/headerIconExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowDescription/headerIndexLabelExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowDescription/initialHeightExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowDescription/isResizableExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//RowDescription/contextMenuEntries"/>
     </genClasses>
     <genClasses ecoreClass="table.ecore#//CellDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//CellDescription/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//CellDescription/preconditionExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//CellDescription/valueExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//CellDescription/tooltipExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//CellDescription/cellWidgetDescription"/>
@@ -51,6 +54,13 @@
     </genClasses>
     <genClasses ecoreClass="table.ecore#//CellLabelWidgetDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//CellLabelWidgetDescription/iconExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="table.ecore#//RowContextMenuEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowContextMenuEntry/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowContextMenuEntry/labelExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowContextMenuEntry/iconURLExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//RowContextMenuEntry/preconditionExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//RowContextMenuEntry/body"/>
     </genClasses>
     <genClasses ecoreClass="table.ecore#//CellTextareaWidgetDescription">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//CellTextareaWidgetDescription/body"/>

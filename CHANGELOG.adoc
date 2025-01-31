@@ -10,7 +10,8 @@
 - Add support to dynamically update representation description
 - Add loading indicators for long actions
 - Add impact analysis before tool execution
-- Add support for artifact publication from a project
+- Add support for the publication of libraries
+- Add support for the import of libraries
 - Improve image export
 - Add the current selection to the URL of the project workbench
 - Improve the customization of the navigation bar
@@ -19,7 +20,7 @@
 === Architectural decision records
 
 - [ADR-178] Add support of actions in table row menu
-- [ADR-179] Add support for artifact publication from a project
+- [ADR-179] Add support for regular commands in the command palette
 - [ADR-180] Add support for widget diagnostics provider in View-based Forms
 - [ADR-181] Improve the customization of the navigation bar
 
@@ -34,7 +35,9 @@ It will allow us to create more complex test data shared by all integration test
 - https://github.com/eclipse-sirius/sirius-web/issues/4418[#4418] [sirius-web] Change type of project_id from UUID to String
 - https://github.com/eclipse-sirius/sirius-web/issues/4404[#4404] [sirius-web] The extension point `navigationBarIconExtensionPoint` has been updated to accept an arbitrary React Component.
 Downstream applications which were using it to change the image of the home button will now be in charge of rendering the whole button.
-
+- https://github.com/eclipse-sirius/sirius-web/issues/4362[#4362] [sirius-web] The `editProjectNavbarSubtitleExtensionPoint` has been removed.
+Use the new frontend extension point `navigationBarCenterContributionExtensionPoint`, which is strictly more powerful, instead.
+See `PapayaExtensionRegistry.tsx` for an example of how rendering a project subtitle can be achieved with the new extension point.
 
 === Dependency update
 
@@ -66,7 +69,7 @@ Before this contribution, migration participants were executed if the project be
 Now they are executed for some data if the data was coming from a studio too.
 - https://github.com/eclipse-sirius/sirius-web/issues/4422[#4422] [diagram] Prevent application crash when an edge path is malformed during node moves
 - https://github.com/eclipse-sirius/sirius-web/issues/4437[#4437] [diagram] Fix selection dialog not opening
-
+- https://github.com/eclipse-sirius/sirius-web/issues/4414[#4414] [sirius-web] Provide a default behavior to return valid JSON on `/api/rest/projects/{projectId}/commits/{commitId}/changes` REST APIs.
 
 === New Features
 
@@ -100,6 +103,12 @@ The new endpoints are:
 Add view-based widgets now support an optional _Diagnostics Expression_.
 The expression can return a string (with a prefix of the form `INFO:`, `WARNING:` or `ERROR:` to indicate the severity), an EMF `org.eclipse.emf.common.util.Diagnostic`, or a list of either of these.
 - https://github.com/eclipse-sirius/sirius-web/issues/4465[#4465] [diagram] Allow end users to view the PNG of a diagram directly by adding the suffix `?mode=png-viewer` to the URL of a diagram
+- https://github.com/eclipse-sirius/sirius-web/issues/4362[#4362] [sirius-web] Added a new frontend extension point `navigationBarCenterContributionExtensionPoint` to control the UI displayed at the center of the navigation bar (normally the project's name and context menu when in `EditProjectView`).
+It can be used to add new elements before/after the default UI or to completely replace the UI with another one if needed.
+Because this new extension point offers complete control of this part of the UI, the `editProjectNavbarSubtitleExtensionPoint` has been removed.
+See `PapayaExtensionRegistry.tsx` for how the same result as before can be achieved with the new extension point.
+- https://github.com/eclipse-sirius/sirius-web/issues/4403[#4403] [table] Add support of actions in table rows context menu
+- https://github.com/eclipse-sirius/sirius-web/issues/4326[#4326] [diagram] Add quickAccessTools to diagram's palette in view dsl
 
 
 === Improvements
@@ -133,6 +142,9 @@ Note that you may need to encode special characters like `[`(by `%5B`) and `]` (
 - https://github.com/eclipse-sirius/sirius-web/issues/4346[#4346] [query] Leverage the session storage to keep expressions entered in the query view even if the view is unmounted.
 - https://github.com/eclipse-sirius/sirius-web/issues/4345[#4345] [table] Make table cells independently selectable
 - https://github.com/eclipse-sirius/sirius-web/issues/4352[#4352] [table] Add support to range column filters in table
+- https://github.com/eclipse-sirius/sirius-web/issues/4474[#4474] [query] Add EMF Services (eSet, eUnset) for the Query View.
+- https://github.com/eclipse-sirius/sirius-web/issues/4354[#4354] [table] Add support for cursor based pagination in table view DSL
+- https://github.com/eclipse-sirius/sirius-web/issues/4478[#4478] [sirius-web] Provide an API to search custom resource on download document action
 
 
 == v2025.1.0
@@ -243,7 +255,7 @@ This is now fixed
 - https://github.com/eclipse-sirius/sirius-web/issues/4291[#4291] [core] Implement REST API documentation with openAPI v3 and swagger
 * Documentation is availlable in the url : /v3/api-docs
 * Swagger UI is availlable in the url : /swagger-ui/index.html#/
-- https://github.com/eclipse-sirius/sirius-web/issues/4335[#4335] [table] Add support of column reordering in table representation 
+- https://github.com/eclipse-sirius/sirius-web/issues/4335[#4335] [table] Add support of column reordering in table representation
 
 === Improvements
 

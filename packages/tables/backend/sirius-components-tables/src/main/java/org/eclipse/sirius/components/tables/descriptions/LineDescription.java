@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 Obeo.
+ * Copyright (c) 2024, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,11 @@ import org.eclipse.sirius.components.representations.VariableManager;
 @Immutable
 public final class LineDescription {
 
+    /**
+     * The variable name used to store a reference to a row.
+     */
+    public static final String SELECTED_ROW = "selectedRow";
+
     private String id;
 
     private Function<VariableManager, String> targetObjectIdProvider;
@@ -36,8 +41,6 @@ public final class LineDescription {
     private Function<VariableManager, String> targetObjectKindProvider;
 
     private Function<VariableManager, PaginatedData> semanticElementsProvider;
-
-    private Predicate<VariableManager> shouldRenderPredicate;
 
     private Function<VariableManager, String> headerLabelProvider;
 
@@ -51,6 +54,10 @@ public final class LineDescription {
 
     private LineDescription() {
         // Prevent instantiation
+    }
+
+    public static Builder newLineDescription(String id) {
+        return new Builder(id);
     }
 
     public String getId() {
@@ -67,10 +74,6 @@ public final class LineDescription {
 
     public Function<VariableManager, PaginatedData> getSemanticElementsProvider() {
         return this.semanticElementsProvider;
-    }
-
-    public Predicate<VariableManager> getShouldRenderPredicate() {
-        return this.shouldRenderPredicate;
     }
 
     public Function<VariableManager, String> getHeaderLabelProvider() {
@@ -91,10 +94,6 @@ public final class LineDescription {
 
     public Predicate<VariableManager> getIsResizablePredicate() {
         return this.isResizablePredicate;
-    }
-
-    public static Builder newLineDescription(String id) {
-        return new Builder(id);
     }
 
     @Override
@@ -118,8 +117,6 @@ public final class LineDescription {
         private Function<VariableManager, String> targetObjectKindProvider;
 
         private Function<VariableManager, PaginatedData> semanticElementsProvider;
-
-        private Predicate<VariableManager> shouldRenderPredicate = variableManager -> true;
 
         private Function<VariableManager, String> headerLabelProvider;
 
@@ -147,11 +144,6 @@ public final class LineDescription {
 
         public Builder semanticElementsProvider(Function<VariableManager, PaginatedData> semanticElementsProvider) {
             this.semanticElementsProvider = Objects.requireNonNull(semanticElementsProvider);
-            return this;
-        }
-
-        public Builder shouldRenderPredicate(Predicate<VariableManager> shouldRenderPredicate) {
-            this.shouldRenderPredicate = Objects.requireNonNull(shouldRenderPredicate);
             return this;
         }
 
@@ -186,7 +178,6 @@ public final class LineDescription {
             lineDescription.targetObjectIdProvider = Objects.requireNonNull(this.targetObjectIdProvider);
             lineDescription.targetObjectKindProvider = Objects.requireNonNull(this.targetObjectKindProvider);
             lineDescription.semanticElementsProvider = Objects.requireNonNull(this.semanticElementsProvider);
-            lineDescription.shouldRenderPredicate = Objects.requireNonNull(this.shouldRenderPredicate);
             lineDescription.headerLabelProvider = Objects.requireNonNull(this.headerLabelProvider);
             lineDescription.headerIconURLsProvider = Objects.requireNonNull(this.headerIconURLsProvider);
             lineDescription.headerIndexLabelProvider = Objects.requireNonNull(this.headerIndexLabelProvider);

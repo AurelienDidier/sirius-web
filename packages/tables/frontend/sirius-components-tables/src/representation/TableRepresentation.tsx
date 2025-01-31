@@ -17,7 +17,7 @@ import { makeStyles } from 'tss-react/mui';
 import { TableContent } from '../table/TableContent';
 import { ColumnFilter } from '../table/TableContent.types';
 import { tableIdProvider } from './tableIdProvider';
-import { TableRepresentationState } from './TableRepresentation.types';
+import { TableRepresentationState, TableRepresentationPagination } from './TableRepresentation.types';
 import { useTableSubscription } from './useTableSubscription';
 
 const useTableRepresentationStyles = makeStyles()((theme) => ({
@@ -27,14 +27,21 @@ const useTableRepresentationStyles = makeStyles()((theme) => ({
     justifyContent: 'center',
     paddingTop: theme.spacing(8),
   },
+  representation: {
+    overflowX: 'auto',
+  },
 }));
+
+const defaultPagination: TableRepresentationPagination = {
+  cursor: null,
+  direction: 'NEXT',
+  size: 10,
+};
 
 export const TableRepresentation = ({ editingContextId, representationId, readOnly }: RepresentationComponentProps) => {
   const { classes } = useTableRepresentationStyles();
   const [state, setState] = useState<TableRepresentationState>({
-    cursor: null,
-    direction: 'NEXT',
-    size: 10,
+    ...defaultPagination,
     globalFilter: null,
     columnFilters: null,
   });
@@ -54,11 +61,11 @@ export const TableRepresentation = ({ editingContextId, representationId, readOn
   };
 
   const onGlobalFilterChange = (globalFilter: string) => {
-    setState((prevState) => ({ ...prevState, globalFilter }));
+    setState((prevState) => ({ ...prevState, ...defaultPagination, globalFilter }));
   };
 
   const onColumnFiltersChange = (columnFilters: ColumnFilter[]) => {
-    setState((prevState) => ({ ...prevState, columnFilters }));
+    setState((prevState) => ({ ...prevState, ...defaultPagination, columnFilters }));
   };
 
   let completeMessage: JSX.Element | null = null;
@@ -73,7 +80,7 @@ export const TableRepresentation = ({ editingContextId, representationId, readOn
   }
 
   return (
-    <div data-testid={'table-representation'}>
+    <div data-testid={'table-representation'} className={classes.representation}>
       {table !== null && !complete ? (
         <TableContent
           editingContextId={editingContextId}

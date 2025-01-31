@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 CEA LIST.
+ * Copyright (c) 2024, 2025 CEA LIST.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.components.view.table;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Row Description</b></em>'. <!-- end-user-doc -->
  *
@@ -19,6 +22,9 @@ package org.eclipse.sirius.components.view.table;
  * The following features are supported:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.components.view.table.RowDescription#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.components.view.table.RowDescription#getSemanticCandidatesExpression <em>Semantic
+ * Candidates Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.components.view.table.RowDescription#getHeaderLabelExpression <em>Header Label
  * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.components.view.table.RowDescription#getHeaderIconExpression <em>Header Icon
@@ -29,13 +35,61 @@ package org.eclipse.sirius.components.view.table;
  * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.components.view.table.RowDescription#getIsResizableExpression <em>Is Resizable
  * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.components.view.table.RowDescription#getContextMenuEntries <em>Context Menu
+ * Entries</em>}</li>
  * </ul>
  *
  * @model
  * @generated
  * @see org.eclipse.sirius.components.view.table.TablePackage#getRowDescription()
  */
-public interface RowDescription extends TableElementDescription {
+public interface RowDescription extends EObject {
+
+    /**
+     * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Name</em>' attribute.
+     * @model dataType="org.eclipse.sirius.components.view.Identifier"
+     * @generated
+     * @see #setName(String)
+     * @see org.eclipse.sirius.components.view.table.TablePackage#getRowDescription_Name()
+     */
+    String getName();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.components.view.table.RowDescription#getName <em>Name</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *         the new value of the '<em>Name</em>' attribute.
+     * @generated
+     * @see #getName()
+     */
+    void setName(String value);
+
+    /**
+     * Returns the value of the '<em><b>Semantic Candidates Expression</b></em>' attribute. The default value is
+     * <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Semantic Candidates Expression</em>' attribute.
+     * @model default="" dataType="org.eclipse.sirius.components.view.InterpretedExpression"
+     * @generated
+     * @see #setSemanticCandidatesExpression(String)
+     * @see org.eclipse.sirius.components.view.table.TablePackage#getRowDescription_SemanticCandidatesExpression()
+     */
+    String getSemanticCandidatesExpression();
+
+    /**
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.components.view.table.RowDescription#getSemanticCandidatesExpression <em>Semantic
+     * Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *         the new value of the '<em>Semantic Candidates Expression</em>' attribute.
+     * @generated
+     * @see #getSemanticCandidatesExpression()
+     */
+    void setSemanticCandidatesExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Header Label Expression</b></em>' attribute. The default value is
@@ -152,5 +206,17 @@ public interface RowDescription extends TableElementDescription {
      * @see #getIsResizableExpression()
      */
     void setIsResizableExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Context Menu Entries</b></em>' containment reference list. The list contents are
+     * of type {@link org.eclipse.sirius.components.view.table.RowContextMenuEntry}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the value of the '<em>Context Menu Entries</em>' containment reference list.
+     * @model containment="true"
+     * @generated
+     * @see org.eclipse.sirius.components.view.table.TablePackage#getRowDescription_ContextMenuEntries()
+     */
+    EList<RowContextMenuEntry> getContextMenuEntries();
 
 } // RowDescription
